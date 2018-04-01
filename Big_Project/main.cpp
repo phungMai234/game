@@ -24,9 +24,9 @@ void DrawBoard()
 				gotoXY(i,j);TextColor(7);cout << char(186);
 			}
 		}
-		gotoXY(LEFT,TOP);TextColor(14);cout << char(219);
-		gotoXY(LEFT+10+1,TOP);TextColor(14);cout << char(219);
-		gotoXY(LEFT,TOP+18+1);TextColor(14);cout << char(2);
-		gotoXY(LEFT+10+1,TOP+18+1);TextColor(14);cout << char(219);
+		gotoXY(LEFT,TOP);TextColor(10);cout << char(219);
+		gotoXY(LEFT+10+1,TOP);TextColor(10);cout << char(219);
+		gotoXY(LEFT,TOP+18+1);TextColor(10);cout << char(2);
+		gotoXY(LEFT+10+1,TOP+18+1);TextColor(10);cout << char(219);
 
 }
