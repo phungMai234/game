@@ -1,0 +1,6 @@
+GAME TETRIS
+1. V? b?ng
+- Game du?c qu?n lý b?ng m?t ma tr?n 2 chi?u kích thu?c 22 x 10 (22 hàng x 10 c?t), trong dó:
+	+ 4 hàng d?u tiên (index i = 0 -> 3) luu v? trí t?m cho các kh?i g?ch. Các ph?n c?a kh?i g?ch mà n?m trong khu v?c b?n hàng d?u tiên s? không du?c hi?n th? lên màn hình game
+	+ khung trò choi hi?n th? lên màn hình kích thu?c 18 x 10 (index i = 4 -> 21)
+- Hàm v? khung d? hi?n th? lên màn hình : void DrawBoard()
