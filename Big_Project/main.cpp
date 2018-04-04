@@ -32,7 +32,7 @@ KhoiGach *TaoKhoiGach(int ID)
 			break;
 		case 31: // hinh vuông
 			pkhoigach->Row=pkhoigach->Col=2;
-			pkhoigach->iBoard=2;
+			pkhoigach->iBoard=1;
 			pkhoigach->jBoard=5;
             break;
 		default: // hình T,L,Z
@@ -89,23 +89,51 @@ void VeKhoiGach(KhoiGach* pkhoigach)
 	int j;
 	for(i = 0;i < pkhoigach->Row; i++)
 		for(j = 0;j < pkhoigach->Col; j++)
-			if(pkhoigach->arr[i][j] == 1 && (pkhoigach->iBoard + i) > 3) // arr k hieu
+			if(pkhoigach->arr[i][j] == 1 ) // arr k hieu
 			{
-				TextColor(5);
+				TextColor(13);
 				gotoXY(LEFT + pkhoigach->jBoard + j + 1, TOP + pkhoigach->iBoard + i - 3);
-				char(2);
+				cout << char(2); // nho cout ra
 			}
 }
+void DrawBoard()
+{
+	int i,j;
+	for(i=LEFT;i<=LEFT+10+1;i++)
+		for(j=TOP;j<=TOP+18+1;j++)
+		{
+			if((j==TOP||j==TOP+18+1)&&i>LEFT&&i<LEFT+10+1)
+			{
+				gotoXY(i,j);TextColor(7);
+				cout << char(205);
+			}
+			if((i==LEFT||i==LEFT+10+1)&&j>TOP&&j<TOP+18+1)
+			{
+				gotoXY(i,j);TextColor(7);
+				cout << char(186);
+			}
+		}
+		gotoXY(LEFT,TOP);TextColor(10);cout << char(219);
+		gotoXY(LEFT+10+1,TOP);TextColor(10);cout << char(219);
+		gotoXY(LEFT,TOP+18+1);TextColor(10);cout << char(219);
+		gotoXY(LEFT+10+1,TOP+18+1);TextColor(10);cout << char(219);
 
-
-
-
-
+}
 
 
 int main()
 {
+    DrawBoard();
+    int ID = Loai();
     KhoiGach* currKhoi;
-    currKhoi = TaoKhoiGach(15);
+    currKhoi = TaoKhoiGach(15);VeKhoiGach(currKhoi);
+    currKhoi = TaoKhoiGach(30);VeKhoiGach(currKhoi);
+    currKhoi = TaoKhoiGach(31);VeKhoiGach(currKhoi);
+    currKhoi = TaoKhoiGach(51);VeKhoiGach(currKhoi);
+    currKhoi = TaoKhoiGach(58);VeKhoiGach(currKhoi);
+    currKhoi = TaoKhoiGach(57);VeKhoiGach(currKhoi);
+    currKhoi = TaoKhoiGach(60);
+
     VeKhoiGach(currKhoi);
+    gotoXY(30,25);
 }

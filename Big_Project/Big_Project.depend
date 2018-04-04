@@ -15,3 +15,9 @@
 1522568840 c:\users\black\game\big_project\console.h
 	<windows.h>
 
+1522806081 source:c:\users\black\game\big_project\main.cpp
+	<iostream>
+	"console.h"
+	<cstdlib>
+	<ctime>
+
