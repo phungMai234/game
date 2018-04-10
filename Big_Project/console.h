@@ -1,5 +1,4 @@
-// basic console functions, collected by Nguyen Trung Thanh
-// abcxyz tcIT
+
 
 #ifndef _console_header
 #define _console_header
@@ -39,6 +38,13 @@
 #include <windows.h>
 
 //--------------------------------------------------------
+
+struct KhoiGach
+{
+    int **arr; // la cai j
+    int Row, Col;
+    int iBoard, jBoard; // jBoard chỉ hàng, iBoard chỉ cột
+};
 
 int inputKey();
 

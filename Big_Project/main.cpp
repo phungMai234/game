@@ -1,7 +1,10 @@
 #include <iostream>
 #include"console.h"
+#include"MoveBlock.h"
 #include<cstdlib>
 #include<ctime>
+#include<windows.h>
+#include<conio.h>
 
 #define LEFT 4
 #define TOP 4
@@ -13,12 +16,15 @@ int Board[MaxI][MaxJ];
 
 using namespace std;
 
-struct KhoiGach
+
+
+struct INFO
 {
-    int **arr; // la cai j
-    int Row, Col;
-    int iBoard, jBoard; // jBoard chỉ hàng, iBoard chỉ cột
+    int score;
+    int level;
+    float speed;
 };
+
 KhoiGach *TaoKhoiGach(int ID)
 {
 	KhoiGach *pkhoigach = new KhoiGach;
@@ -27,18 +33,18 @@ KhoiGach *TaoKhoiGach(int ID)
 		case 15: // hình chữ I
 			pkhoigach->Row=4;
 			pkhoigach->Col=1;
-			pkhoigach->iBoard=0;
+			pkhoigach->iBoard=5;
 			pkhoigach->jBoard=5;
 			break;
 		case 31: // hinh vuông
 			pkhoigach->Row=pkhoigach->Col=2;
-			pkhoigach->iBoard=2;
+			pkhoigach->iBoard=5;
 			pkhoigach->jBoard=5;
             break;
 		default: // hình T,L,Z
 			pkhoigach->Row=2;
 			pkhoigach->Col=3;
-			pkhoigach->iBoard=2;
+			pkhoigach->iBoard=5;
 			pkhoigach->jBoard=5;
 			break;
 	}
@@ -107,94 +113,28 @@ void XoaKhoiGach(KhoiGach* pkhoigach)
             if(pkhoigach->arr[i][j] == 1)
             {
                 TextColor(0);
-                gotoXY(LEFT + pkhoigach->jBoard + j + 1, TOP + pkhoigach->iBoard + i - 3);
+                gotoXY(LEFT + pkhoigach->jBoard + j + 1, TOP + pkhoigach->iBoard + i - 3); //  k hieu
                 cout <<"";
             }
         }
     }
 }
-// ham kiem tra khoi gach co nam trong bang hay k
 
-int Inside(int i, int j)
-{
-    return ((i > 0 && i < MaxI) && (j > 0 && j < MaxJ));
-}
 
-// ham di chuyen mot khoi gach sang trai, phai, xuong
 
-int Left(int i, int j)
-{
-    if(j > 0 && Inside(i, j) && Board[i][j - 1] == 0)
-        return 1;
-    return 0;
-}
-int Right(int i, int j)
-{
-    if((j < MaxJ - 1) && Inside(i, j) && Board[i][j + 1] == 0)
-        return 1;
-    return 0;
-}
-int Down(int i, int j)
-{
-    if((j < MaxI - 1) && Inside(i, j) && Board[i + 1][j] == 0)
-        return 1;
-    return 0;
-}
 
-// ham di chuyen ca khoi gach
 
-void SangTrai(KhoiGach* pkhoigach)
-{
-    int i, j;
-    for(i = 0; i < pkhoigach->Row; i++)
-    {
-        for(j = 0; j < pkhoigach->Col; j++)
-        {
-            if(pkhoigach->arr[i][j] == 1)
-            {
-                if(Left(pkhoigach->iBoard + i, pkhoigach->jBoard + j) == 0 || pkhoigach->iBoard <= 3)
-                    return;
-            }
-        }
-    }
-    pkhoigach->jBoard-=1;
-}
+// ham dieu khien
 
-void SangPhai(KhoiGach* pkhoigach)
-{
-    int i, j;
-    for(i = 0; i < pkhoigach->Row; i++)
-    {
-        for(j = 0; j < pkhoigach->Col; j++)
-        {
-            if(pkhoigach->arr[i][j] == 1)
-            {
-                if(Right(pkhoigach->iBoard + i, pkhoigach->jBoard + j) == 0 || pkhoigach->iBoard <= 3)
-                    return;
-            }
-        }
-    }
-    pkhoigach->iBoard+=1;
-}
 
-int RoiXuong(KhoiGach* pkhoigach)
-{
-    int i, j;
-    for(i = 0; i < pkhoigach->Row; i++)
-    {
-        for(j = 0; j < pkhoigach->Col; j++)
-        {
-            if(pkhoigach->arr[i][j] == 1)
-            {
-                if(Down(pkhoigach->iBoard + i, pkhoigach->jBoard + j) == 0 || pkhoigach->iBoard <= 3)
-                    return 0; // khong roi xuong
-            }
-        }
-    }
-    pkhoigach->iBoard+=1;
-    return 1; // roi xuong
-}
 
+// ham xoay
+
+
+
+
+
+// ve ra man hinh khung
 void DrawBoard()
 {
 	int i,j;
@@ -219,33 +159,168 @@ void DrawBoard()
 
 }
 
+// ham gan gia tri cho ma tra board khi khoi gach k roi xuong nua
+void GanGiaTri(KhoiGach* pkhoigach) // khong hieu ham nay
+{
+    int i, j;
+    for(i = 0; i < pkhoigach->Row; i++)
+    {
+        for(j = 0; j < pkhoigach->Col; j++)
+        {
+            if(pkhoigach->arr[i][j] == 1)
+            {
+                Board[pkhoigach->iBoard + i][pkhoigach->jBoard + j] = 1;
+            }
+        }
+    }
+}
+
+
+// thong tin diem
+
+// bat dau game
+
+void InitGame(INFO *info)
+{
+	info->level=1;
+	info->score=0;
+	info->speed=0.4;
+}
+
+// cap nhat khi sang level moi
+
+int CapNhat(INFO *info, int score)
+{
+	info->score+=score;
+	if(info->score>=200&&info->level<2)
+	{
+		info->level++;
+		info->speed-=0.1;
+	}
+	return 0; //Chua win game.
+}
+// ve bang diem lai sau moi lan
+
+void HuyKhoiGach(KhoiGach* pkhoigach)
+{
+	int i;
+	//Huy bo nho cua ma tran trang thai arr.
+	for(i=0;i<pkhoigach->Row;i++) free(pkhoigach->arr[i]);
+	free(pkhoigach->arr);
+	/////////////////////////////////////////////////////////
+	//Sau do moi free(pkhoigach)
+	free(pkhoigach);
+	pkhoigach=NULL;
+}
+
+void VeBangDiem(INFO info)
+{
+	TextColor(15);
+	gotoXY(LEFT+MaxJ+2,10);
+	cout << "  SCORE: " << info.score;
+	gotoXY(LEFT+MaxJ+2,11);
+	cout << "  LEVEL: " << info.level;
+	gotoXY(LEFT+MaxJ+2,12);
+	cout << "  SPEED: " << info.speed;
+}
+
+
+// ham hien khoi gach tiep thoe
+void Ve_Next(int ID)
+{
+	KhoiGach *pnext=TaoKhoiGach(ID);
+	int iRoot=LEFT+MaxJ+5;
+	int jRoot=TOP + 2;
+	for(int i=0;i<pnext->Row;i++)
+	{
+		for (int j=0;j<pnext->Col;j++)
+		{
+			if(pnext->arr[i][j]==1)
+			{
+				TextColor(9);
+				gotoXY(iRoot+j,jRoot+i);
+				cout << char(2);
+			}
+		}
+
+	}
+	HuyKhoiGach(pnext);
+}
+
+void dieuKhien(KhoiGach* pkhoigach)
+{
+    if(_kbhit())
+    {
+        clrscr();
+        char key = _getch();
+        if(key == 'a' || key == 'A')
+            SangTrai(pkhoigach);
+        if(key == 'd' || key == 'D')
+            SangPhai(pkhoigach);
+        if(key == 's' || key == 'S')
+            RoiXuong(pkhoigach);
+        if(key == 'w' || key == 'W')
+            XoayKhoiGach(pkhoigach);
+        VeKhoiGach(pkhoigach);
+    }
+}
 
 int main()
 {
+
     DrawBoard();
     int ID = Loai();
     KhoiGach* currKhoi;
 
     currKhoi = TaoKhoiGach(ID);
     VeKhoiGach(currKhoi);
-//    if(_kbhit())   //Nếu bàn phím đc nhấn
-//			{
-//				int c=toupper(getch());  //Lấy mã phím vừa đc bấm
-//				XoaKhoiGach(currKhoi);  //Xóa khối gạch
-//				switch(c)
-//				{
-//				case 'A':
-//					SangTrai(currKhoi);
-//					break;
-//				case 'D':
-//					SangPhai(currKhoi);
-//					break;
-//				case 'S':
-//					RoiXuong();
-//					break;
-//				}
-//				VeKhoiGach(currKhoi);//Vẽ lại khối gạch sau khi cập nhật thay đổi.
-//			}
+    while(1)
+	{
 
+        if(_kbhit())
+        {
+            clrscr();
+            DrawBoard();
+            char key = _getch();
+            if(key == 'a' || key == 'A')
+                SangTrai(currKhoi);
+            if(key == 'd' || key == 'D')
+                SangPhai(currKhoi);
+            if(key == 's' || key == 'S')
+                RoiXuong(currKhoi);
+            if(key == 'w' || key == 'W')
+                XoayKhoiGach(currKhoi);
+            VeKhoiGach(currKhoi);
+        }
+//        else
+//        {   clrscr();
+//            RoiXuong(currKhoi);
+//            VeKhoiGach(currKhoi);
+//
+//        }
+        Sleep(200);
+	}
+
+
+//    char c = 'd';
+//    // vidu
+//
+//    INFO infor;
+//    infor.score = 0;
+//    infor.level = 1;
+//    infor.speed = 200;
+//    Ve_Next(ID);
+
+    //do
+    //{
+        //VeBangDiem(infor);
+       // VeKhoiGach(currKhoi);
+        //do
+    //Sleep(500);    //{
+    //dieuKhien(currKhoi);
+        //}while(1);
+    //}while(1);
+
+    //Sleep(5000);
     gotoXY(30,25);
 }

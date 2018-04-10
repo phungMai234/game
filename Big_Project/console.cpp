@@ -3,7 +3,8 @@
 #include "console.h"
 
 
-int inputKey()
+int inputKey() // ham nay dung ddeer lam j
+
 {
 	if (_kbhit())
 	{
@@ -29,7 +30,7 @@ int inputKey()
 //-------------------------Screen-------------------------
 void clrscr()
 {
-	CONSOLE_SCREEN_BUFFER_INFO	csbiInfo;                  
+	CONSOLE_SCREEN_BUFFER_INFO	csbiInfo;
 	HANDLE	hConsoleOut;
 	COORD	Home = {0,0};
 	DWORD	dummy;
