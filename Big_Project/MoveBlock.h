@@ -4,7 +4,7 @@
 #define _console_header
 #include<windows.h>
 
-/* ham kiem tra xem vien gach co nam trong bang khong*/
+
 /*!
  * Function: Inside(int i, int j)
  *
@@ -19,21 +19,52 @@ int Inside(int, int);
 /*------------------------------------------------------*/
 
 
-/* ham di chuyen tung vien gach*/
-
-/* ham di chuyen vien gach sang trai*/
-
+/*!
+ * Function: Left(int i, int j)
+ *
+ * @Brief: Dịch chuyển viên gạch sang bên trái một ô
+ *
+ * @Param: i: vi trí hang của viên gạch đang xét
+ *         j: vi tri côt của viên gạch đang xét
+ *         Inside(i,j): hàm kiểm tra xem viên gạch đang xét có nằm trong bảng không
+ *         Board[i][j - 1] == 1: kiem tra xem có viên gạch nào bên trái tại vị trí mà viên gạch sẽ di chuyển đến hay không
+ * @Return: trả về kết quả: 1: nếu viên gạch thỏa mãn tất cả các điều kiện thì di chuyển được
+ *                          0: trường hợp ngược lại
+ */
 int Left(int, int);
 
-/*ham di chuyen vien gach sang ben phai*/
 
+/*!
+ * Function: Left(int i, int j)
+ *
+ * @Brief: Dịch chuyển viên gạch sang bên phải một ô
+ *
+ * @Param: i: vi trí hang của viên gạch đang xét
+ *         j: vi tri côt của viên gạch đang xét
+ *         Inside(i,j): hàm kiểm tra xem viên gạch đang xét có nằm trong bảng không
+ *         Board[i][j + 1] == 1: kiem tra xem có viên gạch nào bên trái tại vị trí mà viên gạch sẽ di chuyển đến hay không
+ * @Return: trả về kết quả: 1: nếu viên gạch thỏa mãn tất cả các điều kiện thì di chuyển được
+ *                          0: trường hợp ngược lại
+ */
 int Right(int);
 
-/* ham di chuyen vien gach roi xuong*/
-
+/*!
+ * Function: Left(int i, int j)
+ *
+ * @Brief: Di chuyển viên gạch roi xuống một ô
+ *
+ * @Param: i: vi trí hang của viên gạch đang xét
+ *         j: vi tri côt của viên gạch đang xét
+ *         Inside(i,j): hàm kiểm tra xem viên gạch đang xét có nằm trong bảng không
+ *         Board[i + 1][j] == 1: kiem tra xem có viên gạch nào bên trái tại vị trí mà viên gạch sẽ di chuyển đến hay không
+ * @Return: trả về kết quả: 1: nếu viên gạch thỏa mãn tất cả các điều kiện thì di chuyển được
+ *                          0: trường hợp ngược lại
+ */
 int Down(int);
 
+
 /*------------------------------------------------*/
+
 
 /* ham di chuyen ca khoi gach*/
 

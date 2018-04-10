@@ -274,6 +274,10 @@ int main()
 
     currKhoi = TaoKhoiGach(ID);
     VeKhoiGach(currKhoi);
+    INFO info;
+    InitGame(info);
+    CapNhat(info, info.score);
+    VeBangDiem(info);
     while(1)
 	{
 
