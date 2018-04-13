@@ -39,6 +39,8 @@
 		<Unit filename="console.cpp" />
 		<Unit filename="console.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="taoKhoiGach.cpp" />
+		<Unit filename="taoKhoiGach.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -12,12 +12,13 @@
 	<conio.h>
 	"console.h"
 
-1523366186 c:\users\black\game\big_project\console.h
+1523450492 c:\users\black\game\big_project\console.h
 	<windows.h>
 
-1523344278 source:c:\users\black\game\big_project\main.cpp
+1523450332 source:c:\users\black\game\big_project\main.cpp
 	<iostream>
 	"console.h"
+	"MoveBlock.h"
 	<cstdlib>
 	<ctime>
 	<windows.h>
@@ -25,5 +26,8 @@
 
 1523339682 source:c:\users\black\game\big_project\drawmap.cpp
 
-1523339753 source:c:\users\black\game\big_project\moveblock.cpp
+1523450508 source:c:\users\black\game\big_project\moveblock.cpp
+	"MoveBlock.h"
+
+1523451622 c:\users\black\game\big_project\moveblock.h
 

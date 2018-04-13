@@ -1,9 +1,11 @@
 // nho khai bao prototype
+#define MaxI 22
+#define MaxJ 10
 
-#ifndef _console_header
-#define _console_header
-#include<windows.h>
+#define LEFT 4
+#define TOP 4
 
+int Board[MaxI][MaxJ];
 
 /*!
  * Function: Inside(int i, int j)
@@ -14,7 +16,7 @@
  *         j: vi tri côt của viên gạch đang xét
  * @Return: trả về kết quả: vien gạch thuộc mảng Board[22][10] hay không
  */
-int Inside(int, int);
+int Inside(int i, int j);
 
 /*------------------------------------------------------*/
 
@@ -70,15 +72,15 @@ int Down(int);
 
 /*ham di chuyen ca khoi gach sang trai*/
 
-void SangTrai(KhoiGach*);
+void SangTrai(KhoiGach *);
 
 /* ham di chuyen ca khoi gach sang phai*/
 
-void SangPhai(KhoiGach*);
+void SangPhai(KhoiGach *);
 
 /* ham di chuyen ca khoi gach roi xuong*/
 
-void RoiXuong(KhoiGach*);
+int RoiXuong(KhoiGach *);
 
 
 /*-------------------------------------------------*/
@@ -86,5 +88,5 @@ void RoiXuong(KhoiGach*);
 /*ham xoay khoi gach*/
 
 void XoayKhoiGach(KhoiGach* pkhoigach);
-
-#endif
+//
+//#endif

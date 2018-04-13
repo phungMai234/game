@@ -1,8 +1,7 @@
-#include"MoveBlock.h"
-#include<conio.h>
-#include<stdio.h>
 
-int Board[MaxI][MaxJ];
+#include"MoveBlock.h"
+#include"taoKhoiGach.h"
+
 
 int Inside(int i, int j)
 {
@@ -110,8 +109,8 @@ void XoayKhoiGach(KhoiGach* pkhoigach) // hoi quan
 				if(!Inside(pkhoigach->iBoard+i,pkhoigach->jBoard+j)||Board[pkhoigach->iBoard+i][pkhoigach->jBoard+j]==1)
 					return;
 		}
-	for(i=0;i<pkhoigach->Row;i++) free(pkhoigach->arr[i]);
-	free(pkhoigach->arr);
+	for(i=0;i<pkhoigach->Row;i++) delete(pkhoigach->arr[i]);
+	delete(pkhoigach->arr);
 	//Cập nhật thay đổi sau khi xoay.
 	pkhoigach->Col=tmpCol;
 	pkhoigach->Row=tmpRow;
