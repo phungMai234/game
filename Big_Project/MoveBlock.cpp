@@ -1,7 +1,8 @@
 
 #include"MoveBlock.h"
 #include"taoKhoiGach.h"
-
+#include"struct.h"
+#include"console.h"
 
 int Inside(int i, int j)
 {

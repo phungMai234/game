@@ -1,12 +1,6 @@
 // nho khai bao prototype
-#define MaxI 22
-#define MaxJ 10
-
-#define LEFT 4
-#define TOP 4
-
-int Board[MaxI][MaxJ];
-
+#ifndef STRUCT_H_INCLUDED
+#define STRUCT_H_INCLUDED
 /*!
  * Function: Inside(int i, int j)
  *
@@ -89,4 +83,4 @@ int RoiXuong(KhoiGach *);
 
 void XoayKhoiGach(KhoiGach* pkhoigach);
 //
-//#endif
+#endif#// STRUCT_H_INCLUDED

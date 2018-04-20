@@ -30,8 +30,7 @@
 #define key_Right	1077
 #define key_none	-1
 
-#define LEFT 4
-#define TOP 4
+
 
 //--------------------------------------------------------
 

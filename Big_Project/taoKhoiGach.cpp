@@ -1,6 +1,7 @@
 #include"taoKhoiGach.h"
 #include"MoveBlock.h"
-
+#include"struct.h"
+#include"console.h"
 
 KhoiGach *TaoKhoiGach(int ID)
 {

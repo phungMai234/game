@@ -1,6 +1,7 @@
 
 #include"DrawMap.h"
 #include"MoveBlock.h"
+#include"console.h"
 
 void DrawBoard()
 {
