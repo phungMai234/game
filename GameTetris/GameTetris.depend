@@ -1,0 +1,67 @@
+# depslib dependency file v1.0
+1527729092 source:c:\users\black\desktop\gametetris\check.cpp
+	"Icheck.h"
+
+1527729092 c:\users\black\desktop\gametetris\icheck.h
+	<conio.h>
+	"IDraw.h"
+	"IUpdate.h"
+
+1527728879 c:\users\black\desktop\gametetris\idraw.h
+	<iostream>
+	"Idesign.h"
+	"Iconsole.h"
+
+1527728936 c:\users\black\desktop\gametetris\idesign.h
+	"Iconsole.h"
+	<ctime>
+	<cstdlib>
+
+1526006565 c:\users\black\desktop\gametetris\iconsole.h
+	<windows.h>
+
+1527729197 c:\users\black\desktop\gametetris\iupdate.h
+	"IDraw.h"
+
+1526009133 source:c:\users\black\desktop\gametetris\console.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+	"Iconsole.h"
+
+1527728936 source:c:\users\black\desktop\gametetris\design.cpp
+	"Idesign.h"
+
+1527728936 source:c:\users\black\desktop\gametetris\draw.cpp
+	"IDraw.h"
+
+1527727836 source:c:\users\black\desktop\gametetris\menu.cpp
+	"Imenu.h"
+
+1526006183 c:\users\black\desktop\gametetris\imenu.h
+	"Iconsole.h"
+	<iostream>
+	<conio.h>
+
+1527729197 source:c:\users\black\desktop\gametetris\player.cpp
+	"IPlayer.h"
+
+1527728726 c:\users\black\desktop\gametetris\iplayer.h
+	"Icheck.h"
+
+1527729197 source:c:\users\black\desktop\gametetris\update.cpp
+	"IUpdate.h"
+
+1527729941 source:c:\users\black\desktop\gametetris\main.cpp
+	<iostream>
+	<ctime>
+	<cstdlib>
+	<windows.h>
+	<conio.h>
+	"Idesign.h"
+	"IPlayer.h"
+	"IUpdate.h"
+	"Icheck.h"
+	"IDraw.h"
+	"Imenu.h"
+
