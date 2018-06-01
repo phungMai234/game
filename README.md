@@ -1,4 +1,4 @@
-#  Tên trò chơi: Xếp hình(Tetris)
+#  Tên trò chơi: Xếp gạch(Tetris)
 #  Tên tác giả: Phùng Thị Tuyết Mai
 #  Thời gian hoàn thành: 1 tháng
 #  Luật chơi: 
